@@ -361,3 +361,41 @@ Human / AI Agent
 The goal is not merely to build another vector database wrapper.
 
 The goal is to understand and eventually build a reliable **memory infrastructure layer for AI agents and customer interactions**.
+
+## Milestone 1 Completed — Persistent Evidence Ledger
+
+We built our first persistent customer interaction store.
+
+### Flow
+
+Conversation → Pydantic validation → SQLite → persistent evidence → retrieval
+
+### Concepts learned
+
+- Interaction vs memory
+- Evidence preservation
+- Pydantic data models
+- SQLite persistence
+- Primary keys
+- Idempotency
+- Chronological history
+- Serialization using JSON
+- Basic automated testing
+
+### Important architectural lesson
+
+Saving conversations is not the same as creating memory.
+
+The interaction ledger answers:
+
+> What happened?
+
+The memory layer will answer:
+
+> What useful information should the system remember?
+
+### Current limitation
+
+Messages are stored as JSON inside the interaction row.
+
+This is intentionally simple for learning. Later we can normalize messages and migrate the storage layer to PostgreSQL.
